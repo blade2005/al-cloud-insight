@@ -13,6 +13,8 @@ class Tacoma(object):
         https://console.cloudinsight.alertlogic.com/api/tacoma/#api-Saved_Views-ExportSavedViewReport
 
         /tacoma/v1/:account_id/sites/:site_id/saved_views/:saved_view_id/export"""
+        if not account_id:
+            account_id = self.account_id
         r = self.ci(account_id).sites(site_id).saved_views(saved_view_id).export.GET(params={'format': format_})
         if format_ is 'csv':
             return GzipFile(fileobj=StringIO(r.content)).read()
