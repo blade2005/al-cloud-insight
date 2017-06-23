@@ -2,6 +2,7 @@ from hammock import Hammock
 
 from tacoma import Tacoma
 from cloud_explorer import CloudExplorer
+from assets import Assets
 class CloudInsight(object):
     def __init__(self, username, password, host='https://api.cloudinsight.alertlogic.com', version='v1'):
         # We'll do our auth here so we have a working cloud insight hammock object
@@ -18,3 +19,4 @@ class CloudInsight(object):
         
         self.tacoma = Tacoma(self)
         self.cloud_explorer = CloudExplorer(self)
+        self.assets = Assets(self)
