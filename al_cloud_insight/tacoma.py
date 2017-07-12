@@ -32,7 +32,7 @@ class Tacoma(object):
         r = self.ci(account_id).sites(site_id).saved_views(saved_view_id).GET()
         return r.json()
 
-    def export_view_report(self, site_id, saved_view_id, workbook_id, view_id, format_='csv', account_id=None):
+    def export_view_report(self, site_id, workbook_id, view_id, format_='csv', account_id=None):
         """Returns view report for given :account_id, :workbook_id and :view_id. Csv reports are compressed with gzip, whilst pdf reports are not compressed.
 
         https://console.cloudinsight.alertlogic.com/api/tacoma/#api-Views-ExportViewReport
