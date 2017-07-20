@@ -11,7 +11,7 @@ class CloudInsight(object):
         # We'll do our auth here so we have a working cloud insight hammock object
         pre_auth_ci = Hammock(host, auth=(username, password))
         resp = pre_auth_ci.aims(version).authenticate.POST()
-        logging.debugging(resp.status_code)
+        logging.debug(resp.status_code)
         resp.raise_for_status()
         resp = resp.json()
         self.account_id = resp['authentication']['account']['id']
