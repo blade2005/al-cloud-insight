@@ -42,7 +42,15 @@ class Tacoma(object):
             account_id = self.account_id
         r = self.ci(account_id).sites(site_id).workbooks(workbook_id).views(view_id).export.GET(params={'format': format_})
         if format_ is 'csv':
-            return GzipFile(fileobj=StringIO(r.content)).read()
+            resp = None
+            try:
+                resp = GzipFile(fileobj=StringIO(r.content)).read()
+            except IOError as error:
+                print(error)
+                print(r.content)
+                raise
+            else:
+                return resp
         else:
             return r.content
 
