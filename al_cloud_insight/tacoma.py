@@ -46,9 +46,7 @@ class Tacoma(object):
             try:
                 resp = GzipFile(fileobj=StringIO(r.content)).read()
             except IOError as error:
-                print(error)
-                print(r.content)
-                raise
+                raise Exception('Non-Gzip File found', r.content) 
             else:
                 return resp
         else:
